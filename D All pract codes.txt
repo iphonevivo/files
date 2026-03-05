@@ -1,0 +1,202 @@
+prac 3
+AIM:-Perform the data classification using classification algorithm using R/Python.
+*Consider the annual rainfall details at a place starting from January 2012. We create an R time 
+series object for a period of 12 months and plot it
+
+
+rainfall<-c(799,1174.8,865.1,1334.6,635.4,918.5,685.5,998.6,784.2,985,882.8,1071)
+rainfall.timeseries<-ts(rainfall,start=c(2012,1),frequency = 12)
+print(rainfall.timeseries)
+png(file="rainfall.png")
+plot(rainfall.timeseries)
+dev.off()
+
+
+
+prac 4
+*Perform the data clustering using clustering algorithm using R/Python.
+
+newiris<- iris 
+newiris$Species<- NULL 
+(kc<- kmeans(newiris,3))
+table(iris$Species,kc$cluster)
+plot(newiris[c("Sepal.Length","Sepal.Width")],col=kc$cluster) 
+points(kc$centers[,c("Sepal.Length","Sepal.Width")],col=1:3,pch=8,cex=2) 
+dev.off() 
+plot(newiris[c("Sepal.Length","Sepal.Width")],col=kc$cluster)
+
+
+
+
+prac 5
+AIM:-  Perform the Linear regression on the given data warehouse data using R/Python.
+
+
+x <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131) 
+y <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+relation <- lm(y~x)
+print(relation)
+print(summary(relation))
+a <- data.frame(x = 170) 
+result <- predict(relation,a)  
+print(result) 
+png(file = "linearregress.png")
+plot(y,x,col = "blue",main = "Height & Weight Regression", abline(lm(x~y)),cex = 1.3,pch = 16,xlab ="Weight in Kg",ylab = "Height in cm")
+dev.off() 
+
+
+
+Prac 6
+#logistic regression on the given data warehouse data (Download Quality.csv file)
+#link => https://github.com/TarekDib03/Analytics/tree/master/Week3%20-%20Logistic%20Regression/Data
+quality <- read.csv('C:/Users/SIACLAB4PC27/Downloads/quality.csv')
+install.packages(c("caTools", "ROCR"))  # only first time
+library(caTools)
+library(ROCR)
+set.seed(88)
+split <- sample.split(quality$PoorCare, SplitRatio = 0.75)
+qualityTrain <- subset(quality, split == TRUE)
+qualityTest <- subset(quality, split == FALSE)
+QualityLog <- glm(PoorCare ~ OfficeVisits + Narcotics, 
+                  data = qualityTrain, family = binomial)
+predictTrain <- predict(QualityLog, type="response")
+table(qualityTrain$PoorCare, predictTrain > 0.5)  # threshold 0.5
+table(qualityTrain$PoorCare, predictTrain > 0.7)  # threshold 0.7
+table(qualityTrain$PoorCare, predictTrain > 0.2)  # threshold 0.2
+ROCRpred <- prediction(predictTrain, qualityTrain$PoorCare)
+ROCRperf <- performance(ROCRpred, "tpr", "fpr")
+plot(ROCRperf, colorize=TRUE, print.cutoffs.at=seq(0,1,by=0.1), text.adj=c(-0.2,1.7))
+
+
+
+
+prac 7
+
+Write a Python program to read data from a CSV file, perform simple data analysis, and 
+generate basic insights. (Use Pandas is a Python library). 
+
+**in command prompt**
+pip install pandas 
+
+then make file in csv format using excel
+and give column as NAME,AGE,SALARY,BONUS,JOB_ROLE,SALES (KEEP ALL COLUMNS IN CAPITAL (SALARY,AGE,BONUS,JOB_ROLE,SALES ARE MANDATORY))
+
+**idle**
+
+import pandas as pd
+
+df = pd.read_csv("prac8a.csv")
+
+print(df.head())
+print(df.info())
+print(df.describe())
+print(df.isnull().sum())
+print(df.columns)
+
+print("Average Salary:", df["SALARY"].mean())
+print("Youngest Age:", df["AGE"].min())
+print("Oldest Age:", df["AGE"].max())
+print("Average Bonus:", df["BONUS"].mean())
+print("Job Roles:", df["JOB_ROLE"])
+print("Average SALES:", df["SALES"].mean())
+
+print("Data Analysis Completed Successfully!")
+
+
+
+prac 8a
+Perform data visualization using Python on any sales data.
+
+**in command prompt**
+
+pip install pandas numpy matplotlib seaborn 
+
+then make file in csv format using excel
+and give column as NAME,AGE,SALARY,BONUS,JOB_ROLE,SALES(KEEP ALL COLUMNS IN CAPITAL (SALARY,BONUS,SALES ARE MANDATORY))
+
+**in idle**
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv("prac8a.csv")
+print(df.info()); print(df.describe())
+df["BONUS"].value_counts().plot(kind="pie", autopct="%.1f%%")
+plt.title("BONUS Distribution"); plt.show()
+df["SALARY"].plot(kind="bar")
+plt.title("SALARY Distribution"); plt.show()
+sns.scatterplot(data=df, x="SALARY", y="BONUS")
+plt.title("Sales vs Bonus"); plt.show()
+df["SALES"].plot(kind="hist")
+plt.title("SALES Distribution"); plt.show()
+
+
+prac 9
+Create the Data staging area for the selected database using SQL  
+
+CREATE DATABASE Sales_Staging; 
+USE Sales_Staging; 
+
+
+CREATE TABLE Staging_Sales ( 
+SalesID INT PRIMARY KEY, 
+OrderDate DATE, 
+ProductName VARCHAR(100), 
+Category VARCHAR(50), 
+Region VARCHAR(50), 
+SalesAmount DECIMAL(10,2), 
+Profit DECIMAL(10,2), 
+Quantity INT, 
+LoadDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+BatchID INT );
+
+
+
+INSERT INTO Staging_Sales (SalesID, OrderDate, ProductName, Category, Region, SalesAmount, 
+Profit, Quantity, BatchID) 
+VALUES  
+(1, '2024-01-01', 'Laptop', 'Electronics', 'North', 1200.00, 200.00, 3, 101), 
+(2, '2024-01-02', 'Smartphone', 'Electronics', 'South', 800.00, 150.00, 2, 101), 
+(3, '2024-01-03', 'Tablet', 'Electronics', 'East', 600.00, 100.00, 5, 101);
+
+
+DELETE FROM Staging_Sales 
+WHERE SalesID NOT IN ( 
+SELECT MIN(SalesID) FROM Staging_Sales GROUP BY OrderDate, ProductName, Region 
+);
+
+
+UPDATE Staging_Sales  
+SET Profit = 0  
+WHERE Profit IS NULL; 
+
+
+CREATE TABLE Final_Sales ( 
+SalesID INT PRIMARY KEY, 
+OrderDate DATE, 
+ProductName VARCHAR(100), 
+Category VARCHAR(50), 
+Region VARCHAR(50), 
+SalesAmount DECIMAL(10,2), 
+Profit DECIMAL(10,2), 
+Quantity INT, 
+LoadDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+BatchID INT );
+
+
+INSERT INTO Final_Sales ( 
+SalesID, OrderDate, ProductName, Category, Region, SalesAmount, Profit, Quantity 
+) 
+SELECT  
+SalesID, OrderDate, ProductName, Category, Region, SalesAmount, Profit, Quantity 
+FROM Staging_Sales; 
+
+
+DELETE FROM Staging_Sales WHERE BatchID = 101;
+
+
+
+
+
+
+

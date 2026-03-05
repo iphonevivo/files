@@ -1,0 +1,357 @@
+Practical 1A
+
+Import Data Warehouse Data in Excel and Create Pivot Table & Pivot Chart
+
+What it is
+
+A Data Warehouse is a large storage system that stores historical data for analysis.
+In this practical, data from the data warehouse is imported into Excel and analyzed using Pivot Table and Pivot Chart.
+
+Procedure
+	1.	Open Microsoft Excel.
+	2.	Go to the Data tab.
+	3.	Click Get Data / From Database / From SQL Server Database.
+	4.	Enter the Server Name and Database Name.
+	5.	Select the required table and click Load.
+	6.	Select the data and click Insert → Pivot Table.
+	7.	Choose New Worksheet and click OK.
+	8.	Drag fields into Rows, Columns, and Values sections.
+	9.	Click Insert → Pivot Chart.
+	10.	Select chart type (Column, Bar, Pie etc.).
+
+Result
+
+Pivot Table and Pivot Chart are created to analyze the imported data.
+
+⸻
+
+Practical 1B
+
+Aim
+
+To import the cube in Microsoft Excel and create a Pivot Table and Pivot Chart to perform data analysis.
+
+⸻
+
+What it is (Explanation)
+
+An OLAP Cube (Online Analytical Processing Cube) is a multidimensional data structure used in Business Intelligence for fast data analysis.
+It stores data in the form of dimensions and fact tables so that users can easily analyze large datasets.
+
+In this practical, a Sales Data Warehouse database (Sales_DW) is created using a SQL script and then connected to Microsoft Excel. The data is analyzed using Pivot Table.
+
+⸻
+
+Procedure
+
+Step 1: Create Data Warehouse Database
+	1.	Open SQL Server Management Studio 2022 (SSMS).
+	2.	Open the SQL Script file (SQLScript.sql).
+	3.	Execute the script by clicking Execute.
+	4.	The script will create the Sales_DW database with dimension and fact tables.
+	5.	Verify that the SalesDW database is created successfully in the Databases folder.
+
+⸻
+
+Step 2: Connect Excel to SQL Server
+	1.	Open Microsoft Excel.
+	2.	Go to the Data tab.
+	3.	Click From SQL Server.
+	4.	Select the database Sales_DW.
+
+⸻
+
+Step 3: Data Connection Wizard
+	1.	The Data Connection Wizard dialog box will appear.
+	2.	Enter the Server Name (example: siaclab2pc03\sqlexpress).
+	3.	Select Use Windows Authentication.
+	4.	Click Next.
+
+⸻
+
+Step 4: Select Database
+	1.	A window showing databases will appear.
+	2.	Select the database Sales_DW.
+	3.	Click Next.
+
+⸻
+
+Step 5: Select Tables
+	1.	Enable selection of multiple tables.
+	2.	Select all the required tables such as:
+
+	•	DimCustomer
+	•	DimDate
+	•	DimProduct
+	•	DimSalesPerson
+	•	DimStores
+	•	DimTime
+	•	FactProductSales
+
+	3.	Click Next.
+
+⸻
+
+Step 6: Save Data Connection
+	1.	The Save Data Connection File window will appear.
+	2.	Enter the file name and description.
+	3.	Click Finish.
+
+⸻
+
+Step 7: Import Data
+	1.	The Import Data window will appear.
+	2.	Select PivotTable Report.
+	3.	Choose Existing worksheet or New worksheet.
+	4.	Click OK.
+
+⸻
+
+Step 8: Create Pivot Table
+	1.	The Pivot Table Fields panel will appear.
+	2.	Drag database columns into appropriate sections:
+
+	•	TimeKey from DimTime → Columns
+	•	CustomerId from DimCustomer → Rows
+	•	ProductName from DimProduct → Rows
+	•	Quantity from FactProductSales → Values
+
+⸻
+
+Step 9: Analyze Data
+
+The Pivot Table will display the sales quantity of different products purchased by customers over time.
+
+⸻
+
+Result:
+The Sales Data Warehouse cube is successfully imported into Microsoft Excel and analyzed using a Pivot Table
+
+Practical 2
+
+What-If Analysis Using Excel
+
+What it is
+
+What-If Analysis is an Excel feature used to analyze how changing input values affects the result of a formula.
+It helps in forecasting and decision making.
+
+Procedure
+	1.	Open Microsoft Excel and enter the dataset.
+	2.	Create a formula to calculate the result (for example profit).
+	3.	Go to the Data tab.
+	4.	Click What-If Analysis.
+	5.	Select Scenario Manager.
+	6.	Click Add and enter the scenario name.
+	7.	Select the changing cells.
+	8.	Enter new values for the scenario.
+	9.	Repeat for multiple scenarios.
+	10.	Click Show to compare results.
+
+Result
+
+Different scenarios are analyzed using What-If Analysis.
+
+⸻
+
+Practical 3
+
+Data Classification using R/Python
+
+What it is
+
+Classification is a data mining technique used to categorize data into predefined groups or classes.
+
+Example: Spam or Not Spam email.
+
+Procedure
+	1.	Install required libraries (pandas, sklearn).
+	2.	Import dataset into Python or R.
+	3.	Load dataset using pandas.
+	4.	Divide dataset into features (X) and target variable (Y).
+	5.	Split data into training and testing sets.
+	6.	Apply a classification algorithm.
+	7.	Train the model using training data.
+	8.	Predict results using testing data.
+	9.	Display classification output.
+
+Result
+
+Data is classified into categories using a classification algorithm.
+
+⸻
+
+Practical 4
+
+Data Clustering using K-Means Algorithm
+
+What it is
+
+Clustering is a data mining technique that groups similar data points together.
+The K-Means algorithm divides the data into K clusters based on similarity.
+
+Procedure
+	1.	Open R or Python environment.
+	2.	Load the dataset (for example iris dataset).
+	3.	Remove unnecessary columns if required.
+	4.	Apply the K-Means clustering function.
+	5.	Specify the number of clusters (K).
+	6.	Run the clustering algorithm.
+	7.	Plot the clusters on a graph.
+	8.	Display cluster centers.
+
+Result
+
+Data is grouped into clusters based on similarity.
+
+⸻
+
+Practical 5
+
+Linear Regression
+
+What it is
+
+Linear Regression is a statistical technique used to find the relationship between two variables.
+It predicts the value of one variable based on another variable.
+
+Example: Predicting weight from height.
+
+Procedure
+	1.	Define dataset values for X and Y.
+	2.	Assign X as predictor variable and Y as response variable.
+	3.	Apply the linear regression function.
+	4.	Train the regression model.
+	5.	Display regression coefficients.
+	6.	Use predict() function to estimate new values.
+	7.	Plot the regression line on a graph.
+	8.	Analyze the relationship between variables.
+
+Result
+
+The relationship between variables is analyzed using linear regression.
+
+⸻
+
+Practical 6
+
+Logistic Regression
+
+What it is
+
+Logistic Regression is a classification algorithm used to predict binary outcomes such as Yes/No or 0/1.
+
+Example: Disease present or not.
+
+Procedure
+	1.	Import dataset (example: quality.csv).
+	2.	Load dataset in R or Python.
+	3.	Analyze dataset structure.
+	4.	Split dataset into training and testing sets.
+	5.	Apply the logistic regression model.
+	6.	Train the model using training data.
+	7.	Predict results using testing data.
+	8.	Evaluate the model accuracy.
+
+Result
+
+Binary classification is performed using logistic regression.
+
+⸻
+
+Practical 7
+
+Python Program to Analyze CSV Data using Pandas
+
+What it is
+
+Pandas is a Python library used for data analysis and manipulation.
+It allows reading and analyzing CSV files easily.
+
+Procedure
+	1.	Install pandas using pip.
+	2.	Import pandas library.
+	3.	Load CSV file using read_csv() function.
+	4.	Display first rows using head().
+	5.	Display dataset information using info().
+	6.	Generate statistics using describe().
+	7.	Check missing values using isnull().
+	8.	Display column names.
+
+Result
+
+Data from the CSV file is analyzed using Pandas.
+
+⸻
+
+Practical 8A
+
+Data Visualization using Python
+
+What it is
+
+Data Visualization is the graphical representation of data using charts and graphs to understand patterns and trends.
+
+Procedure
+	1.	Install required libraries (pandas, numpy, matplotlib, seaborn).
+	2.	Import the libraries.
+	3.	Load or create sales dataset.
+	4.	Convert date column to datetime format.
+	5.	Create line chart for sales trend.
+	6.	Create bar chart for category sales.
+	7.	Create histogram for sales distribution.
+	8.	Create scatter plot to show relationships.
+
+Result
+
+Sales data is visualized using different charts.
+
+⸻
+
+Practical 8B
+
+Data Visualization using Power BI
+
+What it is
+
+Power BI is a Business Intelligence tool used to create dashboards and reports for data analysis.
+
+Procedure
+	1.	Open Power BI Desktop.
+	2.	Click Home → Get Data.
+	3.	Select the data source (Excel/CSV).
+	4.	Load the dataset into Power BI.
+	5.	Clean data using Power Query Editor.
+	6.	Create charts such as line chart or bar chart.
+	7.	Add filters and slicers for interaction.
+	8.	Save the dashboard.
+
+Result
+
+An interactive dashboard is created using Power BI.
+
+⸻
+
+Practical 9
+
+Create Data Staging Area using SQL
+
+What it is
+
+A Data Staging Area is a temporary storage area where raw data is cleaned and transformed before loading into the data warehouse.
+
+Procedure
+	1.	Open SQL Server Management Studio (SSMS).
+	2.	Create a new database:
+ CREATE DATABASE Sales_Staging;
+      3. Use the database:
+USE Sales_Staging;
+	4.	Create staging table for storing raw data.
+	5.	Insert raw data using INSERT command.
+	6.	Clean data by removing duplicates.
+	7.	Handle missing values.
+	8.	Load clean data into final data warehouse tables.
+
+Result
+
+A staging area is created to store and clean raw data before loading into the data warehouse.

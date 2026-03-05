@@ -1,0 +1,4 @@
+ https://github.com/TarekDib03/Analytics/tree/master/Week3%20-%20Logistic%20Regression/Data
+
+
+DOWNLOAD THE FILE NAMED AS quality.csv (Scroll down to find it)

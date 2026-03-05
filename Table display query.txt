@@ -1,0 +1,14 @@
+This shows your table if it exists
+
+select * 
+from INFORMATION_SCHEMA.TABLES
+where TABLE_NAME = 'yourtablename';
+
+This shows all tables in the database
+
+SELECT * FROM sys.tables;
+
+
+This is to show contents
+
+select * from test;
