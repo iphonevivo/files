@@ -1,0 +1,81 @@
+Practical 6 – Logistic Regression (Easy Python Method)
+
+
+Aim
+
+
+To perform Logistic Regression on the given data warehouse dataset using Python.
+
+What it is
+
+
+Logistic Regression is a machine learning algorithm used for classification problems where the output has two possible values such as 0 or 1 (Yes/No).
+
+
+
+Example:
+
+Disease: Yes / No
+
+Spam email: Spam / Not Spam
+
+
+
+It predicts the probability of a class using a logistic (sigmoid) function.
+
+Requirements
+
+
+Install required libraries: ( do in CMD)
+
+"C:\Users\YourName\AppData\Local\Programs\Python\Python311\python.exe" -m pip install pandas numpy matplotlib seaborn scikit-learn
+
+
+Procedure (Easy Steps)
+Import required Python libraries.
+
+Load the dataset using pandas.
+
+Select input variables (features) and output variable (target).
+
+Split the dataset into training and testing data.
+
+Create a Logistic Regression model.
+
+Train the model using training data.
+
+Predict the output for test data.
+
+Display prediction results.
+
+Python code:
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# Load dataset
+data = pd.read_csv("quality.csv")
+
+# Select features and target
+X = data[['OfficeVisits','Narcotics']]
+y = data['PoorCare']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# Create logistic regression model
+model = LogisticRegression()
+
+# Train model
+model.fit(X_train, y_train)
+
+# Predict results
+prediction = model.predict(X_test)
+
+print("Predicted values:")
+print(prediction)
+
+Result
+
+
+Logistic regression model is successfully implemented and used to predict the classification output.
